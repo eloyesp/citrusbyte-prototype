@@ -29,7 +29,7 @@ Cuba.define do
 
     on 'controls/:id' do |id|
       control = device[:controls][id.to_i]
-      render 'control', control: control
+      render "controls/#{ control[:type] }_settings", control: control
     end
   end
 end
