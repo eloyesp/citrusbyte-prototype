@@ -1,0 +1,9 @@
+{{ control[:name] }}
+
+{{ app.partial 'controls/button', control: control }}
+
+<form action="settings" method="post">
+  <label>Endpoint <input name="endpoint" required></label>
+
+  <button>Update settings</button>
+</form>
