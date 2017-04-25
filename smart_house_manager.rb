@@ -4,7 +4,7 @@ require 'mote/render'
 
 Cuba.plugin(Mote::Render)
 
-Cuba.define do
+Admin = Cuba.new do
   on root do
     render 'admin_dashboard', devices: DEVICES
   end
@@ -16,7 +16,7 @@ Cuba.define do
 
     on post do
       DEVICES.push name: req.params['name'], controls: []
-      res.redirect "/devices/#{ DEVICES.length - 1 }"
+      res.redirect "/admin/devices/#{ DEVICES.length - 1 }"
     end
   end
 
@@ -37,7 +37,7 @@ Cuba.define do
       on post do
         control = ControlFactory.create(req.params)
         device[:controls].push(control)
-        res.redirect("/devices/#{ id }/")
+        res.redirect("/admin/devices/#{ id }/")
       end
     end
 
@@ -45,6 +45,12 @@ Cuba.define do
       control = device[:controls][id.to_i]
       render "controls/#{ control[:type] }_settings", control: control
     end
+  end
+end
+
+Cuba.define do
+  on 'admin' do
+    run Admin
   end
 end
 
