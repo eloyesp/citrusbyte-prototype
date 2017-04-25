@@ -1,0 +1,8 @@
+<h1>{{ device[:name] }}</h1>
+
+<h2>Controls</h2>
+<ul>
+% device[:controls].each_with_index do |control, index|
+  <li>{{ control[:name] }}</li>
+% end
+</ul>

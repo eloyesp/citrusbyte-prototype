@@ -3,7 +3,7 @@
 <h2>Devices</h2>
 
 <ul>
-% devices.each do |dev|
-  <li><a href="/devices/{{ dev[:name] }}">{{ dev[:name] }}</a></li>
+% devices.each_with_index do |dev, id|
+  <li><a href="/devices/{{ id }}">{{ dev[:name] }}</a></li>
 % end
 </ul>

@@ -6,7 +6,12 @@ Cuba.plugin(Mote::Render)
 
 Cuba.define do
   on root do
-    render 'admin_dashboard', { devices: DEVICES }
+    render 'admin_dashboard', devices: DEVICES
+  end
+
+  on 'devices/:id' do |id|
+    device = DEVICES[id.to_i]
+    render 'device', device: device
   end
 end
 
