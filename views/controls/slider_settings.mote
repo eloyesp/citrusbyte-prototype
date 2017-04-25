@@ -1,7 +1,5 @@
 {{ control[:name] }}
 
-{{ app.partial 'controls/slider' }}
-
 <form action="settings" method="post">
   <label>Endpoint <input name="endpoint" required></label>
 
