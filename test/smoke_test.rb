@@ -19,4 +19,9 @@ scope do
     assert last_response.body.include?("Smart House Manager"), 'missing title'
     assert last_response.body.include?('Volume')
   end
+
+  test "new device form" do
+    get "/devices/new"
+    assert last_response.body.include?('Add new device')
+  end
 end

@@ -7,3 +7,5 @@
   <li><a href="/devices/{{ id }}/">{{ dev[:name] }}</a></li>
 % end
 </ul>
+
+<a href="/devices/new">Add new device</a>

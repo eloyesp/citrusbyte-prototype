@@ -9,6 +9,10 @@ Cuba.define do
     render 'admin_dashboard', devices: DEVICES
   end
 
+  on 'devices/new' do
+    render 'device_form'
+  end
+
   on 'devices/:id' do |id|
     device = DEVICES[id.to_i]
 

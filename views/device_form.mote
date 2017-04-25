@@ -1,0 +1,6 @@
+<h1>Add new device</h1>
+
+<form method="post">
+  <label>Name <input name="name" required></label>
+  <button>Create</button>
+</form>
