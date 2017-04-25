@@ -40,4 +40,16 @@ scope do
     follow_redirect!
     assert last_response.body.include?('Test device')
   end
+
+  test "new control form" do
+    get '/devices/1/controls/new?type=button'
+    assert last_response.body.include?('Add new button control')
+  end
+
+  test "add a new button control" do
+    post '/devices/1/controls/new?type=button', endpoint: 'POST example.com/test', name: 'test control'
+    follow_redirect!
+    assert last_response.body.include?('Sony Audio'), 'redirect to device page'
+    assert last_response.body.include?('test control'), 'control was created'
+  end
 end

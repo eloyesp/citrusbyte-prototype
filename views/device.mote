@@ -6,3 +6,15 @@
   <li><a href="controls/{{ index }}/">{{ control[:name] }}</a></li>
 % end
 </ul>
+
+<h2>Add new control</h2>
+<form action="controls/new">
+  <select name="type" required>
+    <option value="">Select the controll type
+    <option value="slider">Slider control
+    <option value="button">Simple button
+    <option value="select">Select control
+  </select>
+
+  <button>Configure</button>
+</form>

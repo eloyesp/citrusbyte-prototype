@@ -27,6 +27,20 @@ Cuba.define do
       render 'device', device: device
     end
 
+    on 'controls/new' do
+      type = req.params['type']
+
+      on get do
+        render "controls/#{ type }_settings", control: {}
+      end
+
+      on post do
+        control = ControlFactory.create(req.params)
+        device[:controls].push(control)
+        res.redirect("/devices/#{ id }/")
+      end
+    end
+
     on 'controls/:id' do |id|
       control = device[:controls][id.to_i]
       render "controls/#{ control[:type] }_settings", control: control
@@ -62,3 +76,21 @@ DEVICES = [
     }]
   }
 ]
+
+module ControlFactory
+  module_function
+
+  def create params
+    case params['type']
+    when 'button'
+      create_button params
+    else raise "Invalid type #{ params['type'] }"
+    end
+  end
+
+  def create_button params
+    { name: params['name'],
+      type: 'button',
+      endpoint: params['endpoint'] }
+  end
+end

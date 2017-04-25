@@ -1,9 +1,8 @@
-{{ control[:name] }}
+<h1>{{ control[:name] || 'Add new button control' }}</h1>
 
-{{ app.partial 'controls/button', control: control }}
-
-<form action="settings" method="post">
+<form method="post">
+  <label>Name <input name="name" required></label>
   <label>Endpoint <input name="endpoint" required></label>
 
-  <button>Update settings</button>
+  <button>Save settings</button>
 </form>
