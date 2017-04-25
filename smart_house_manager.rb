@@ -16,7 +16,7 @@ Admin = Cuba.new do
 
     on post do
       DEVICES.push name: req.params['name'], controls: []
-      res.redirect "/admin/devices/#{ DEVICES.length - 1 }"
+      res.redirect "/admin/devices/#{ DEVICES.length - 1 }/"
     end
   end
 
