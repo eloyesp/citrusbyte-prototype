@@ -24,4 +24,10 @@ scope do
     get "/devices/new"
     assert last_response.body.include?('Add new device')
   end
+
+  test "submit new device" do
+    post "/devices/new", name: 'Test device'
+    follow_redirect!
+    assert last_response.body.include?('Test device')
+  end
 end

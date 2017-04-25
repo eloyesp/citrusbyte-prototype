@@ -10,7 +10,14 @@ Cuba.define do
   end
 
   on 'devices/new' do
-    render 'device_form'
+    on get do
+      render 'device_form'
+    end
+
+    on post do
+      DEVICES.push name: req.params['name'], controls: []
+      res.redirect "/devices/#{ DEVICES.length - 1 }"
+    end
   end
 
   on 'devices/:id' do |id|
