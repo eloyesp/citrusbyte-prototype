@@ -52,6 +52,15 @@ Cuba.define do
   on 'admin' do
     run Admin
   end
+
+  on 'dashboard' do
+    render 'mobile_dashboard', devices: DEVICES
+  end
+
+  on 'devices/:id' do |id|
+    device = DEVICES[id.to_i]
+    render 'mobile_device', device: device
+  end
 end
 
 DEVICES = [

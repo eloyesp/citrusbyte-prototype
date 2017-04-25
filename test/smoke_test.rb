@@ -52,4 +52,17 @@ scope do
     assert last_response.body.include?('Sony Audio'), 'redirect to device page'
     assert last_response.body.include?('test control'), 'control was created'
   end
+
+  test "mobile dashboard list devices" do
+    get '/dashboard'
+    assert last_response.body.include?("Smart House Manager"), 'missing title'
+    assert last_response.body.include?('Sony Audio')
+  end
+
+  test "mobile dashboard list devices" do
+    get '/devices/1/'
+    assert last_response.body.include?("Smart House Manager"), 'missing title'
+    assert last_response.body.include?('Sony Audio')
+    assert last_response.body.include?('Volume')
+  end
 end

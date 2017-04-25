@@ -1,0 +1,9 @@
+<header>
+  <a href="/dashboard">&lt;</a> <h1>{{ device[:name] }}</h1>
+</header>
+
+<ul>
+% device[:controls].each_with_index do |control, index|
+  <li>{{ app.partial("controls/#{ control[:type] }", control: control) }}</li>
+% end
+</ul>
