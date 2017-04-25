@@ -13,4 +13,10 @@ scope do
     assert last_response.body.include?("Smart House Manager"), 'missing title'
     assert last_response.body.include?('Sony Audio')
   end
+
+  test "control view" do
+    get "/devices/1/controls/1"
+    assert last_response.body.include?("Smart House Manager"), 'missing title'
+    assert last_response.body.include?('Volume')
+  end
 end

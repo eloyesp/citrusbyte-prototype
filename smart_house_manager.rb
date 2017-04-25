@@ -11,7 +11,15 @@ Cuba.define do
 
   on 'devices/:id' do |id|
     device = DEVICES[id.to_i]
-    render 'device', device: device
+
+    on root do
+      render 'device', device: device
+    end
+
+    on 'controls/:id' do |id|
+      control = device[:controls][id.to_i]
+      render 'control', control: control
+    end
   end
 end
 

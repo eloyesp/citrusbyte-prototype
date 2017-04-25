@@ -4,6 +4,6 @@
 
 <ul>
 % devices.each_with_index do |dev, id|
-  <li><a href="/devices/{{ id }}">{{ dev[:name] }}</a></li>
+  <li><a href="/devices/{{ id }}/">{{ dev[:name] }}</a></li>
 % end
 </ul>
