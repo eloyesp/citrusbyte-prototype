@@ -51,18 +51,18 @@ scope do
   end
 
   test "button control view" do
-    get "/admin/device_types/1/controls/0"
+    get "/admin/device_types/1/controls/1"
     assert last_response.body.include?('Power')
   end
 
   test "config button control" do
-    post "/admin/device_types/1/controls/0", name: "test Power"
+    post "/admin/device_types/1/controls/1", name: "test Power"
     follow_redirect!
     assert last_response.body.include?('test Power')
   end
 
   test "select control view" do
-    get "/admin/device_types/1/controls/2"
+    get "/admin/device_types/1/controls/3"
     assert last_response.body.include?('Playlist')
   end
 
@@ -89,7 +89,7 @@ scope do
     assert last_response.body.include?('test control'), 'control was created'
   end
 
-  test "mobile dashboard list device_types" do
+  test "mobile dashboard list devices" do
     get '/dashboard'
     assert last_response.body.include?("Smart House Manager"), 'missing title'
     assert last_response.body.include?('Sony Audio')
