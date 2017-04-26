@@ -3,7 +3,7 @@ Admin = Cuba.new do
     render 'admin_dashboard', device_types: DeviceType.all, devices: Device.all
   end
 
-  on 'device' do
+  on 'devices' do
     on 'new' do
       on get do
         render 'admin/devices/new', device_types: DeviceType.all
@@ -17,6 +17,11 @@ Admin = Cuba.new do
         )
         res.redirect '/admin/'
       end
+    end
+
+    on ':id' do |device_id|
+      device = Device[device_id.to_i]
+      render 'admin/devices/show', device: device
     end
   end
 

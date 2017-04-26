@@ -15,14 +15,19 @@ scope do
   end
 
   test "new device" do
-    get "/admin/device/new"
+    get "/admin/devices/new"
     assert last_response.status == 200
   end
 
   test "create device" do
-    post "/admin/device/new", name: 'test device', type: '1', ip: 'localhost'
+    post "/admin/devices/new", name: 'test device', type: '1', ip: 'localhost'
     follow_redirect!
     assert last_response.body.include?('test device')
+  end
+
+  test "GET show device" do
+    get "/admin/devices/1/"
+    assert last_response.body.include?('Bedroom Apple TV')
   end
 
   test "slide control view" do
