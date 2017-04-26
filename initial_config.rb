@@ -28,6 +28,24 @@ DEVICE_TYPES_SEED = [
         options: [ 'Lonely Day', 'Soldier Side' ]
       }
     }]
+  }, {
+    name: 'Apple TV',
+    controls: [{
+      name: 'Power',
+      type: 'button'
+    }, {
+      name: 'Brightness',
+      type: 'slider'
+    }, {
+      name: 'Volume',
+      type: 'slider'
+    }]
+  }, {
+    name: 'Citrus Lights',
+    controls: [{
+      name: 'On/Off',
+      type: 'button'
+    }]
   }
 ]
 
