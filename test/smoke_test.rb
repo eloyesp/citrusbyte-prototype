@@ -30,6 +30,20 @@ scope do
     assert last_response.body.include?('Bedroom Apple TV')
   end
 
+  test "POST device values" do
+    post "/admin/devices/2/values", values: {
+      Power: '1',
+      Volume: 81,
+      Playlist: 'Soldier Side' }
+    follow_redirect!
+    assert last_response.body.include?('Livingroom Player')
+    assert Device[2][:values]['Power'], 'power is on'
+    assert_equal Device[2][:values]['Volume'], '81'
+    assert_equal Device[2][:values]['Playlist'], 'Soldier Side'
+    assert last_response.body.include?('checked'), 'power is on now'
+    assert last_response.body.include?('value="81"'), 'volume is updated'
+  end
+
   test "slide control view" do
     get "/admin/device_types/1/controls/1"
     assert last_response.body.include?("Smart House Manager"), 'missing title'

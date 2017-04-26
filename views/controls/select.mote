@@ -1,4 +1,4 @@
-<select name="{{ control[:name] }}">
+<select name="[values]{{ control[:name] }}">
 % control[:config][:options].each do |option|
   <option>{{ option }}
 % end

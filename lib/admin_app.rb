@@ -21,7 +21,15 @@ Admin = Cuba.new do
 
     on ':id' do |device_id|
       device = Device[device_id.to_i]
-      render 'admin/devices/show', device: device
+
+      on root do
+        render 'admin/devices/show', device: device
+      end
+
+      on 'values' do
+        device[:values].merge! req.params['values']
+        res.redirect "/admin/devices/#{ device_id }/"
+      end
     end
   end
 

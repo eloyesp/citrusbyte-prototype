@@ -1,3 +1,4 @@
-<form method="post">
-  <label>{{ control[:name] }}<input type="range"></label>
-</form>
+<label>{{ control[:name] }}
+  <input name="[values]{{ control[:name] }}" type="range"
+    value="{{ value }}">
+</label>
