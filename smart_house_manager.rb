@@ -19,11 +19,19 @@ Cuba.define do
   end
 
   on 'dashboard' do
-    render 'mobile_dashboard', device_types: DeviceType.all
+    render 'mobile_dashboard', devices: Device.all
   end
 
-  on 'device_types/:id' do |id|
-    device_type = DeviceType[id.to_i]
-    render 'mobile_device_type', device_type: device_type
+  on 'devices/:id' do |id|
+    device = Device[id.to_i]
+
+    on root do
+      render 'mobile_device', device: device
+    end
+
+    on 'values', post do
+      device[:values].merge! req.params['values']
+      res.redirect "/devices/#{ id }/"
+    end
   end
 end

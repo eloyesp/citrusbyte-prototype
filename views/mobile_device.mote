@@ -1,0 +1,15 @@
+<header>
+  <a href="/dashboard">&lt;</a> <h1>{{ device[:name] }}</h1>
+</header>
+
+<form action="values" method="post">
+<ul>
+% device[:type][:controls].each do |control|
+<li>
+{{ app.partial "controls/#{ control[:type] }", control: control,
+value: device[:values][control[:name]] }}
+</li>
+% end
+</ul>
+<input type="submit">
+</form>

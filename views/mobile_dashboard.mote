@@ -1,9 +1,9 @@
 <h1>Dashboard</h1>
 
-<h2>Device Types</h2>
+<h2>Devices</h2>
 
 <ul>
-% device_types.each do |dev|
-  <li><a href="device_types/{{ dev[:id] }}/">{{ dev[:name] }}</a></li>
+% devices.each do |dev|
+  <li><a href="devices/{{ dev[:id] }}/">{{ dev[:name] }}</a></li>
 % end
 </ul>
