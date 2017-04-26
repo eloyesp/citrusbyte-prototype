@@ -16,36 +16,3 @@ class DeviceType < Struct.new(:id, :name, :controls)
     DEVICE_TYPES[id - 1]
   end
 end
-
-DEVICE_TYPES_SEED = [
-  { name: 'Samsung Audio',
-    controls: [{
-      name: 'Power',
-      type: 'button'
-    }, {
-      name: 'Volume',
-      type: 'slider'
-    }, {
-      name: 'Playlist',
-      type: 'select',
-      options: [ 'Lonely Day', 'Soldier Side' ]
-    }]
-  }, {
-    name: 'Sony Audio',
-    controls: [{
-      name: 'Power',
-      type: 'button'
-    }, {
-      name: 'Volume',
-      type: 'slider'
-    }, {
-      name: 'Playlist',
-      type: 'select',
-      options: [ 'Lonely Day', 'Soldier Side' ]
-    }]
-  }
-]
-
-DEVICE_TYPES_SEED.each do |device_type|
-  DeviceType.create device_type
-end

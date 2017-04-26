@@ -1,5 +1,5 @@
 <select name="{{ control[:name] }}">
-% control[:options].each do |option|
+% control[:config][:options].each do |option|
   <option>{{ option }}
 % end
 </select>

@@ -5,7 +5,7 @@
     <input name="name" value="{{ control[:name] }}">
   </label>
 
-  <label>Options <input name="options" value="{{ (control[:options] || []).join(', ') }}"></label>
+  <label>Options <input name="options" value="{{ (control[:config][:options] || []).join(', ') }}"></label>
   <label>Endpoint <input name="endpoint"></label>
 
   <button>Update settings</button>

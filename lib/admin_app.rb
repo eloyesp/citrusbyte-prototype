@@ -25,11 +25,14 @@ Admin = Cuba.new do
       type = req.params['type']
 
       on get do
-        render "controls/#{ type }_settings", control: {}
+        render "controls/#{ type }_settings", control: Control.new
       end
 
       on post do
-        control = ControlFactory.create(req.params)
+        control = Control.create(
+          name:   req.params['name'],
+          type:   req.params['type'],
+          config: req.params['config'])
         device_type[:controls].push(control)
         res.redirect("/admin/device_types/#{ device_type_id }/")
       end
@@ -43,7 +46,7 @@ Admin = Cuba.new do
       end
 
       on post do
-        control.merge!(name: req.params['name'])
+        control.update(name: req.params['name'])
         res.redirect "/admin/device_types/#{ device_type_id }/"
       end
     end

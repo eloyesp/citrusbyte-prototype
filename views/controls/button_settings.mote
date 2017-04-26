@@ -6,7 +6,7 @@
   </label>
 
   <label>Endpoint
-    <input name="[config]endpoint" required value="{{ control[:endpoint] }}">
+    <input name="[config]endpoint" required value="{{ control[:config][:endpoint] }}">
   </label>
 
   <button>Save settings</button>
