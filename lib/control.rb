@@ -42,6 +42,6 @@ end
 class SelectControl < Control
   def initialize *arguments
     super
-    self[:config][:options] = ['foo', 'bar']
+    self[:config][:options] ||= ['foo', 'bar']
   end
 end
