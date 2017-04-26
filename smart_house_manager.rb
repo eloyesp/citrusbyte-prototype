@@ -49,6 +49,10 @@ Admin = Cuba.new do
 end
 
 Cuba.define do
+  on root do
+    render 'welcome'
+  end
+
   on 'admin' do
     run Admin
   end
