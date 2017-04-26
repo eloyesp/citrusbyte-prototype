@@ -25,6 +25,12 @@ scope do
     assert last_response.body.include?('Power')
   end
 
+  test "config button control" do
+    post "/admin/devices/1/controls/0", name: "test Power"
+    follow_redirect!
+    assert last_response.body.include?('test Power')
+  end
+
   test "select control view" do
     get "/admin/devices/1/controls/2"
     assert last_response.body.include?('Playlist')
@@ -43,7 +49,7 @@ scope do
 
   test "new control form" do
     get '/admin/devices/1/controls/new?type=button'
-    assert last_response.body.include?('Add new button control')
+    assert last_response.body.include?('Configure button control')
   end
 
   test "add a new button control" do

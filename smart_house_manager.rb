@@ -20,8 +20,8 @@ Admin = Cuba.new do
     end
   end
 
-  on 'devices/:id' do |id|
-    device = DEVICES[id.to_i]
+  on 'devices/:id' do |device_id|
+    device = DEVICES[device_id.to_i]
 
     on root do
       render 'device', device: device
@@ -37,13 +37,21 @@ Admin = Cuba.new do
       on post do
         control = ControlFactory.create(req.params)
         device[:controls].push(control)
-        res.redirect("/admin/devices/#{ id }/")
+        res.redirect("/admin/devices/#{ device_id }/")
       end
     end
 
     on 'controls/:id' do |id|
       control = device[:controls][id.to_i]
-      render "controls/#{ control[:type] }_settings", control: control
+
+      on get do
+        render "controls/#{ control[:type] }_settings", control: control
+      end
+
+      on post do
+        control.merge!(name: req.params['name'])
+        res.redirect "/admin/devices/#{ device_id }/"
+      end
     end
   end
 end

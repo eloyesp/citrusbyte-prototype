@@ -1,8 +1,13 @@
-<h1>{{ control[:name] || 'Add new button control' }}</h1>
+<h1>Configure button control</h1>
 
 <form method="post">
-  <label>Name <input name="name" required></label>
-  <label>Endpoint <input name="endpoint" required></label>
+  <label>Name
+    <input name="name" required value="{{ control[:name] }}">
+  </label>
+
+  <label>Endpoint
+    <input name="[config]endpoint" required value="{{ control[:endpoint] }}">
+  </label>
 
   <button>Save settings</button>
 </form>
