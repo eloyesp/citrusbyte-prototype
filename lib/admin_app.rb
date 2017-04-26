@@ -1,6 +1,23 @@
 Admin = Cuba.new do
   on root do
-    render 'admin_dashboard', device_types: DeviceType.all
+    render 'admin_dashboard', device_types: DeviceType.all, devices: Device.all
+  end
+
+  on 'device' do
+    on 'new' do
+      on get do
+        render 'admin/devices/new', device_types: DeviceType.all
+      end
+
+      on post do
+        Device.create(
+          name: req.params['name'],
+          type: DeviceType[req.params['type'].to_i],
+          ip: req.params['ip']
+        )
+        res.redirect '/admin/'
+      end
+    end
   end
 
   on 'device_types/new' do

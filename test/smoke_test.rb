@@ -14,6 +14,17 @@ scope do
     assert last_response.body.include?('Sony Audio')
   end
 
+  test "new device" do
+    get "/admin/device/new"
+    assert last_response.status == 200
+  end
+
+  test "create device" do
+    post "/admin/device/new", name: 'test device', type: '1', ip: 'localhost'
+    follow_redirect!
+    assert last_response.body.include?('test device')
+  end
+
   test "slide control view" do
     get "/admin/device_types/1/controls/1"
     assert last_response.body.include?("Smart House Manager"), 'missing title'

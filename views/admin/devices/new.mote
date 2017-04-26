@@ -1,0 +1,15 @@
+<h1>Add new device</h1>
+
+<form method="post">
+  <label>Name <input name="name" required></label>
+  <label>Type
+  <select name="type" required>
+  % device_types.each do |device_type|
+    <option value="{{ device_type[:id] }}">{{ device_type[:name] }}</option>
+  % end
+  </select>
+  </label>
+  <label>IP <input name="ip"></label>
+
+  <button>Create</button>
+</form>
