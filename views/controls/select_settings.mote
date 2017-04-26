@@ -1,9 +1,12 @@
-{{ control[:name] }}
+<h1>Configure slide control</h1>
 
-{{ app.partial 'controls/select', control: control }}
+<form method="post">
+  <label>Name
+    <input name="name" value="{{ control[:name] }}">
+  </label>
 
-<form action="settings" method="post">
-  <label>Endpoint <input name="endpoint" required></label>
+  <label>Options <input name="options" value="{{ (control[:options] || []).join(', ') }}"></label>
+  <label>Endpoint <input name="endpoint"></label>
 
   <button>Update settings</button>
 </form>

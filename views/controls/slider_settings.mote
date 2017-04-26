@@ -1,7 +1,10 @@
-{{ control[:name] }}
+<h1>Configure slide control</h1>
 
-<form action="settings" method="post">
-  <label>Endpoint <input name="endpoint" required></label>
+<form method="post">
+  <label>Name
+    <input name="name" value="{{ control[:name] }}">
+  </label>
+  <label>Endpoint <input name="endpoint"></label>
 
   <button>Update settings</button>
 </form>

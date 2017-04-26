@@ -111,6 +111,10 @@ module ControlFactory
     case params['type']
     when 'button'
       create_button params
+    when 'slider'
+      create_slider params
+    when 'select'
+      create_select params
     else raise "Invalid type #{ params['type'] }"
     end
   end
@@ -120,4 +124,18 @@ module ControlFactory
       type: 'button',
       endpoint: params['endpoint'] }
   end
+
+  def create_select params
+    { name: params['name'],
+      type: 'select',
+      endpoint: params['endpoint'],
+      options: ['foo', 'bar'] }
+  end
+
+  def create_slider params
+    { name: params['name'],
+      type: 'slider',
+      endpoint: params['endpoint'] }
+  end
+
 end
