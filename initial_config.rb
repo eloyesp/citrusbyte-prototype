@@ -53,3 +53,15 @@ DEVICE_TYPES_SEED.each do |device_type|
   controls = device_type[:controls].map! { |control| Control.create(control) }
   DeviceType.create device_type
 end
+
+Device.create name: "Bedroom Apple TV",
+  type: DeviceType[3],
+  ip: 'localhost'
+
+Device.create name: "Livingroom Player",
+  type: DeviceType[1],
+  ip: 'localhost'
+
+Device.create name: "Livingroom Lights",
+  type: DeviceType[4],
+  ip: 'localhost'
