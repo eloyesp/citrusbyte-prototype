@@ -9,7 +9,7 @@ scope do
   end
 
   test "device view" do
-    get "/admin/devices/1/"
+    get "/admin/devices/2/"
     assert last_response.body.include?("Smart House Manager"), 'missing title'
     assert last_response.body.include?('Sony Audio')
   end
@@ -53,7 +53,7 @@ scope do
   end
 
   test "add a new button control" do
-    post '/admin/devices/1/controls/new?type=button', endpoint: 'POST example.com/test', name: 'test control'
+    post '/admin/devices/2/controls/new?type=button', endpoint: 'POST example.com/test', name: 'test control'
     follow_redirect!
     assert last_response.body.include?('Sony Audio'), 'redirect to device page'
     assert last_response.body.include?('test control'), 'control was created'
@@ -66,7 +66,7 @@ scope do
   end
 
   test "mobile dashboard list devices" do
-    get '/devices/1/'
+    get '/devices/2/'
     assert last_response.body.include?("Smart House Manager"), 'missing title'
     assert last_response.body.include?('Sony Audio')
     assert last_response.body.include?('Volume')

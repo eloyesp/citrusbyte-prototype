@@ -1,12 +1,13 @@
 require 'cuba'
 require 'mote'
 require 'mote/render'
+require_relative 'lib/device'
 
 Cuba.plugin(Mote::Render)
 
 Admin = Cuba.new do
   on root do
-    render 'admin_dashboard', devices: DEVICES
+    render 'admin_dashboard', devices: Device.all
   end
 
   on 'devices/new' do
@@ -15,13 +16,13 @@ Admin = Cuba.new do
     end
 
     on post do
-      DEVICES.push name: req.params['name'], controls: []
-      res.redirect "/admin/devices/#{ DEVICES.length - 1 }/"
+      device = Device.create name: req.params['name'], controls: []
+      res.redirect "/admin/devices/#{ device.id }/"
     end
   end
 
   on 'devices/:id' do |device_id|
-    device = DEVICES[device_id.to_i]
+    device = Device[device_id.to_i]
 
     on root do
       render 'device', device: device
@@ -66,43 +67,14 @@ Cuba.define do
   end
 
   on 'dashboard' do
-    render 'mobile_dashboard', devices: DEVICES
+    render 'mobile_dashboard', devices: Device.all
   end
 
   on 'devices/:id' do |id|
-    device = DEVICES[id.to_i]
+    device = Device[id.to_i]
     render 'mobile_device', device: device
   end
 end
-
-DEVICES = [
-  { name: 'Samsung Audio',
-    controls: [{
-      name: 'Power',
-      type: 'button'
-    }, {
-      name: 'Volume',
-      type: 'slider'
-    }, {
-      name: 'Playlist',
-      type: 'select',
-      options: [ 'Lonely Day', 'Soldier Side' ]
-    }]
-  }, {
-    name: 'Sony Audio',
-    controls: [{
-      name: 'Power',
-      type: 'button'
-    }, {
-      name: 'Volume',
-      type: 'slider'
-    }, {
-      name: 'Playlist',
-      type: 'select',
-      options: [ 'Lonely Day', 'Soldier Side' ]
-    }]
-  }
-]
 
 module ControlFactory
   module_function
