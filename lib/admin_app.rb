@@ -69,7 +69,7 @@ Admin = Cuba.new do
     end
 
     on 'controls/:id' do |id|
-      control = device_type[:controls][id.to_i]
+      control = Control[id.to_i]
 
       on get do
         render "controls/#{ control[:type] }_settings", control: control

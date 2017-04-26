@@ -45,7 +45,7 @@ scope do
   end
 
   test "slide control view" do
-    get "/admin/device_types/1/controls/1"
+    get "/admin/device_types/1/controls/2"
     assert last_response.body.include?("Smart House Manager"), 'missing title'
     assert last_response.body.include?('Volume')
   end

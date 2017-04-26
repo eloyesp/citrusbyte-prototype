@@ -6,9 +6,19 @@ class Control < Struct.new(:id, :name, :type, :config)
     self[:config] ||= {}
   end
 
+  # keep track of subclasses to find an appropiate control type
+  def self.inherited subclass
+    @control_types ||= {}
+    subtype = subclass.name.gsub(/Control$/, '').downcase
+    @control_types[subtype] = subclass
+  end
+
   def self.create attributes
     id = CONTROLS.length + 1
-    control = new id,
+
+    control_type = @control_types[attributes[:type]] || self
+
+    control = control_type.new id,
       attributes[:name],
       attributes[:type],
       attributes[:config] || {}
@@ -26,5 +36,12 @@ class Control < Struct.new(:id, :name, :type, :config)
 
   def update attributes
     attributes.each { |att, val| send(:"#{att}=", val) }
+  end
+end
+
+class SelectControl < Control
+  def initialize *arguments
+    super
+    self[:config][:options] = ['foo', 'bar']
   end
 end
