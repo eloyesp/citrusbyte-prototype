@@ -3,7 +3,7 @@
 </header>
 
 <ul>
-% device_type[:controls].each_with_index do |control, index|
+% device_type[:controls].each do |control|
   <li>{{ app.partial("controls/#{ control[:type] }", control: control) }}</li>
 % end
 </ul>

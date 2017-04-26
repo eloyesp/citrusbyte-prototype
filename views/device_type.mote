@@ -2,8 +2,8 @@
 
 <h2>Controls</h2>
 <ul>
-% device_type[:controls].each_with_index do |control, index|
-  <li><a href="controls/{{ index }}/">{{ control[:name] }}</a></li>
+% device_type[:controls].each do |control|
+  <li><a href="controls/{{ control[:id] }}/">{{ control[:name] }}</a></li>
 % end
 </ul>
 
