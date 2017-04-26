@@ -1,6 +1,8 @@
-<h1>Add new device</h1>
+<h1>Add new device type</h1>
 
 <form method="post">
   <label>Name <input name="name" required></label>
+  <label>IP <input name="ip"></label>
+
   <button>Create</button>
 </form>

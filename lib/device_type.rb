@@ -1,23 +1,23 @@
-class Device < Struct.new(:id, :name, :controls)
-  DEVICES = []
+class DeviceType < Struct.new(:id, :name, :controls)
+  DEVICE_TYPES = []
 
   def self.create attributes
-    id = DEVICES.length + 1
-    device = new id, attributes[:name], attributes[:controls]
-    DEVICES << device
-    device
+    id = DEVICE_TYPES.length + 1
+    device_type = new id, attributes[:name], attributes[:controls]
+    DEVICE_TYPES << device_type
+    device_type
   end
 
   def self.all
-    DEVICES
+    DEVICE_TYPES
   end
 
   def self.[] id
-    DEVICES[id - 1]
+    DEVICE_TYPES[id - 1]
   end
 end
 
-DEVICES_SEED = [
+DEVICE_TYPES_SEED = [
   { name: 'Samsung Audio',
     controls: [{
       name: 'Power',
@@ -46,6 +46,6 @@ DEVICES_SEED = [
   }
 ]
 
-DEVICES_SEED.each do |device|
-  Device.create device
+DEVICE_TYPES_SEED.each do |device_type|
+  DeviceType.create device_type
 end
