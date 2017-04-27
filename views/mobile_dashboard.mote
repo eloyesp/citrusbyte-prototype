@@ -1,8 +1,8 @@
-<h1>Dashboard</h1>
+<header>
+  <h1>Home Dashboard</h1>
+</header>
 
-<h2>Devices</h2>
-
-<ul>
+<ul class="item_list">
 % devices.each do |dev|
   <li><a href="devices/{{ dev[:id] }}/">{{ dev[:name] }}</a></li>
 % end

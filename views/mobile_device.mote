@@ -3,7 +3,7 @@
 </header>
 
 <form action="values" method="post">
-<ul>
+<ul class="item_list">
 % device[:type][:controls].each do |control|
 <li>
 {{ app.partial "controls/#{ control[:type] }", control: control,
