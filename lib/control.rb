@@ -44,4 +44,10 @@ class SelectControl < Control
     super
     self[:config][:options] ||= ['foo', 'bar']
   end
+
+  def config= config
+    options = config.delete 'options'
+    config[:options] = options.split(',').map(&:strip) if options
+    super
+  end
 end

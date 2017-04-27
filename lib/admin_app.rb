@@ -76,7 +76,8 @@ Admin = Cuba.new do
       end
 
       on post do
-        control.update(name: req.params['name'])
+        control.update(name: req.params['name'],
+                       config: req.params['config'])
         res.redirect "/admin/device_types/#{ device_type_id }/"
       end
     end
