@@ -1,5 +1,13 @@
-<label>{{ control[:name] }}
+<label class="switch-light switch-ios" onclick="">
   <input type="hidden" name="[values]{{ control[:name] }}" value="0">
   <input type="checkbox" name="[values]{{ control[:name] }}" value="1"
          {{ 'checked' if value == '1' }}>
+
+  <strong>{{ control[:name] }}</strong>
+
+  <span class="control">
+    <span>Off</span>
+    <span>On</span>
+    <a></a>
+  </span>
 </label>

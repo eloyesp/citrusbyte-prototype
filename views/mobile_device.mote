@@ -11,5 +11,5 @@ value: device[:values][control[:name]] }}
 </li>
 % end
 </ul>
-<input type="submit">
+<input type="submit" value="done">
 </form>

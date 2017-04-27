@@ -47,7 +47,25 @@ ul {
   background-color: hsla(31, 93%, 53%, 1);
   border-radius: 5px;
 }
+
+label.switch-light {
+  padding: 5px;
+}
+
+.switch-light .control {
+  width: 6em !important;
+  position: absolute;
+  top: 0.5em;
+  right: 5px;
+}
+.switch-ios.switch-light input:checked ~ span.control {
+  box-shadow: 0 0 0 30px hsla(31, 93%, 53%, 1) inset;
+}
+.switch-ios.switch-light input:checked ~ span a {
+  border-color: hsla(31, 93%, 53%, 1) !important;
+}
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css">
 </head>
 <body>
   {{ content }}
