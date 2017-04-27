@@ -20,20 +20,32 @@ header h1 {
   display: inline-block;
   font-size: 1em;
   margin-left: 1em;
-}
+} 
 
 ul {
   padding: 0;
   list-style: none;
 }
+
 .item_list li {
   background-color: #ccc;
   border-radius: 5px;
-  line-height: 1.5;
+  line-height: 2.5;
   list-style: outside none none;
   margin: 0.5em auto;
-  padding: 0.5em;
   width: 80%;
+}
+.item_list a {
+  color: inherit;
+  display: block;
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+.item_list a:hover {
+  background-color: hsla(31, 93%, 53%, 1);
+  border-radius: 5px;
 }
 </style>
 </head>
